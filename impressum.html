@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <title>Plattform Maßnahmenvollzug</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Rubik:400,700,900" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="css/animate.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  	body{
+  		font-family: Rubik, sans-serif;
+		font-style: normal;
+		font-weight: 400;
+  	}
+  	.navbar {
+  		margin-bottom: 0;
+  		border-radius: 0;
+  		background-color: #fff;
+  		color: #000;
+  		padding: 1% 0;
+  		font-size: 1.2em;
+  		border: 0;
+  	}
+
+  	.navbar-default {
+      max-width: 1000px;
+      margin:auto;
+	}
+
+  	.navbar-brand {
+  		float: left;
+  		min-height: 55px;
+  		padding: 0 15px 5px;
+  	}
+  	.navbar-default .navbar-nav .active a, .navbar-default .navbar-nav .active a:focus, .navbar-default .navbar-nav .active a:hover {
+  		color: #000;
+  		background-color: white;
+  	}
+
+  	.navbar .navbar-nav, .center {
+	    display: inline-block;
+	    float: none;
+	}
+
+	.navbar .navbar-collapse {
+	    text-align: right;
+	}
+
+  	.navbar-default .navbar-nav li a {
+  		color:#d5d5d5;
+  		text-transform:uppercase;
+  		font-weight: 700;
+  		transition: all ease 0.3s;
+  	}
+
+  	.carousel-caption {
+  		top: 50%;
+  		transform: translateY(-50%);
+  		text-transform:uppercase;
+  	}
+  	.btn{
+  		font-size: 18px;
+  		color: #000;
+  		padding: 22px 42px;
+  		border: 2px solid #000;
+  		margin: 30px auto;
+  		text-transform: uppercase;
+  		transition: all ease 0.3s;
+  	}
+  	button.btn:hover, button.btn:focus{
+  		background:#000;
+  		color:#fff;
+  	}
+  	h2 {
+  		font-weight:900;
+  	}
+  	h4 {
+  		font-weight:700;
+  		font-size: 22px;
+  	}
+  	.headtxt h2{
+  		text-transform: uppercase;
+  		font-size: 3em;
+  	}
+
+  	.headpic{
+  		transform: translateX(0px);
+  		z-index: -1;
+  		-webkit-animation-delay: 0.3s;
+  		-moz-animation-delay: 0.3s;
+  		-o-animation-delay: 0.3s;
+  		-ms-animation-delay: 0.3s;
+  	}
+  	.headpic img {
+  		
+    	-webkit-filter: grayscale(100%) brightness(1.5);
+  		filter: grayscale(100%) brightness(1.5);
+  	}
+
+  	img.justiz{
+  		-webkit-filter: grayscale(100%);
+  		filter: grayscale(100%);
+  	}
+  	p {
+  		font-size:18px;
+  	}
+  	.icon {
+  		max-width:200px;
+  		margin: 1% auto;
+  	}
+  	.container{
+  		margin:4% auto;
+  	}
+  	#overlay{
+  		position: fixed;
+  		display: none;
+  		width: 100%;
+  		height:100%;
+  		top: 0; 
+	    left: 0;
+	    right: 0;
+	    bottom: 0;
+  		background-color: rgba(256,256,256,0.9);
+  		z-index: 2;
+  		padding-top: 100px;
+  		height:100%;
+  		overflow: scroll;
+  	}
+
+  	.close {
+  		font-size:50px;
+  		transition: all ease 0.3s;
+  	}
+    .col-sm-1{
+      min-width:50px;
+    }
+
+  	button.close:hover {
+  	}
+
+  	#overlay .container{
+  		transition: 2s;
+  	}
+
+  	#overlay .fadein{
+  		opacity: 1;
+  	}
+
+  	.content {
+  		height: 100%;
+  		overflow:auto;
+  	}
+  	p.bold{
+  		font-weight:700;
+  		font-size: 30px;
+  		line-height:130%;
+  	}
+  	p.semibold{
+  		font-size: 24px;
+  		line-height:150%;
+  		margin-top: 25px;
+  	}
+  	p.footnote{
+  		font-size: 12px;
+  	}
+
+    .logos .row {
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+    .logos .row div{
+    }
+    .logos .row img{
+      max-height: 130px;
+      margin: auto;
+    }
+    .logos a {
+      text-decoration:none;
+      color:#000;
+    }
+    .logos a:hover, .logos a:focus {
+      color: #000;
+    }
+
+    .img-box{
+      margin:20px auto;
+      height:130px;
+      max-width: 80%;
+      vertical-align: middle;
+    }
+
+    .img-text{
+      margin: 20px auto;
+      max-width: 90%;
+      height: 40px;
+    }
+
+    .logo-wrapper{
+      width:98%;
+      margin:auto;
+      border: 1px solid #d5d5d5;
+      transition: all ease 0.3s;
+      vertical-align: middle;
+      display:inline-block;
+    }
+
+    .logo-wrapper:hover{
+      border: 1px solid black;
+    }
+  	footer {
+  		width:100%;
+  		border-top: 1px solid #d5d5d5;
+  		padding: 3%;
+  	}
+  	.fa{
+  		padding:15px;
+  		font-size: 30px;
+  		color: #FFF;
+  	}
+
+  	.fa:hover{
+  		color: #D5D5D5;
+  		text-decoration: none;
+  	}
+
+  	@media (min-width: 1400px) {
+		.container {
+    		width: 1370px;
+		}
+		.headtxt {
+			margin: 0 0px;
+		}
+	}
+
+	@media (min-width: 1200px) {
+		.headtxt h2{
+	  		transform: translateX(-100px);
+	  		margin: 7% auto;
+	  	}
+	  	.headpic{
+	  		transform: translateX(0px);
+	  		z-index: -1;
+	  	}
+	}
+
+	@media (min-width: 900px){
+		#overlay {
+			margin-left: 30px;
+		}
+		.navbar-default .navbar-nav li:not(:last-child) {
+			margin-right: 40px;
+		}
+	}
+
+  	@media (max-width: 900px) {
+  		.fa {
+  			font-size: 20px;
+  			padding: 10px;
+  		}
+  		.headtxt h2 {
+        word-wrap: break-word;
+      }
+      p.claim{
+        text-align:left;
+      }
+  	}
+
+  	@media (max-width: 600px) {
+  		.carousel-caption{
+  			display:none;
+  		}
+	  	#icon {
+	  		max-width: 150px;
+	  	}
+	  	h2 {
+	  		font-size: 1.7em ;
+	  	}
+	  	body {}
+  	}
+
+
+  	.headtxt-p {
+  		-webkit-animation-delay: 0.5s;
+  		-moz-animation-delay: 0.5s;
+  		-o-animation-delay: 0.5s;
+  		-ms-animation-delay: 0.5s;
+  	}
+  	.headtxt-h {
+  		-webkit-animation-delay: 0.3s;
+  		-moz-animation-delay: 0.3s;
+  		-o-animation-delay: 0.3s;
+  		-ms-animation-delay: 0.3s;
+  	}
+  	.signup{
+  		-webkit-animation-delay: 1s;
+  		-moz-animation-delay: 1s;
+  		-o-animation-delay: 1s;
+  		-ms-animation-delay: 1s;
+  	}
+
+  </style>
+</head>
+<body>
+  <div id="overlay">
+    <div class="container" onclick="off()">
+      <div class="row">
+        <div class="col-sm-4 col-xs-9" onclick="event.stopPropagation()">
+          <p class="bold">Hier erreichen Sie uns.</p>
+          <p class="semibold"><a href="mailto:buero@plattform-mnvz.at" target:"_top">buero@plattform-mnvz.at</a><br>Markgraf-Rüdiger-Strasse 12/3<br>1150 Wien<br>Österreich<br>Tel +43 1 786 42 45</p>
+        </div>
+        <div class="col-sm-1 col-xs-1">
+          <button type="button" class="close" aria-label="Close" onclick="off()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+	<div class="content">
+		<nav class="navbar navbar-default">
+			<div class="container-fluid animated fadeInUp">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+          <a class="navbar-brand img-responsive" href="index.html"><img style="" src="img/plattformklein.png"></a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="nav-item"><a href="index.html#plattform">Die Plattform</a></li>
+            <li class="nav-item"><a href="forderungen.html">Forderungen</a></li>
+						<li class="nav-item" onclick="on()"><a href="#">Kontakt</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<div class="container header">
+			<div class="row">
+				<div class="col-lg-8 animated fadeInUp">
+          <h2>Impressum</h2>
+          <h3>Rechtliche Hinweise</h3>
+          <p>
+Die Angaben auf dieser Website unterliegen einem Impressum, einer Erklärung über den Haftungsausschluss, einem Copyright-Vermerk, Bestimmungen zum Schutz personenbezogener Daten sowie einem Vermerk zur geschlechterneutralen Formulierung.<br><br>
+
+Copyright-Vermerk
+© 2018, Selbst- und Interessensvertretung zum Maßnahmenvollzug
+<br><br>
+Bei Quellenangabe ist der Nachdruck einzelner auf dieser Website abrufbarer Texte vorbehaltlich des Widerrufs durch den Herausgeber gestattet, soweit dies zur Verfolgung nicht kommerzieller Zwecke gerechtfertigt ist.
+<br><br>
+Ist für die Nutzung von Text-, Multimedia- oder anderen Daten (Ton, Bilder, Programme usw.) eine Genehmigung einzuholen, so hebt diese die obenstehende allgemeine Genehmigung der nicht kommerziellen Nutzung auf; auf etwaige Nutzungsbeschränkungen wird hingewiesen, soweit dies tunlich ist.
+<br><br></p>
+<h3>Offenlegung gemäß § 25 Abs 4 Mediengesetz<br>
+Haftungsausschluss</h3>
+
+<p>a) Inhalte der Website www.plattform-mnvz.at<br>
+Die auf der Website www.plattform-mnvz.at zur Verfügung gestellten Inhalte wurden sorgfältig erstellt, Vollständigkeit, Richtigkeit, Aktualität, Verfügbarkeit der Inhalte und Freiheit von Rechten Dritter kann aber nicht garantiert werden. Der Herausgeber sowie die ProgrammabwicklerInnen und AutorInnen übernehmen keinerlei Haftung für Schäden und Nachteile, die allenfalls aus der Nutzung oder Verwertung der Inhalte entstehen.<br>
+Die Informationen auf www.massnahmenvollzug.org sind notwendigerweise vielfach allgemein gehalten, Besonderheiten der Sachverhalte können in jedem Einzelfall zu abweichenden Ergebnissen führen. Die Nutzung der Inhalte erfolgt auf eigene Verantwortung und ersetzt insbesondere auch keine fachkundige Beratung.<br>
+b) Inhalte Dritter<br>
+Inhalte Dritter sind als solche gekennzeichnet. Trotz Sorgfalt bei der Übernahme der Inhalte übernimmt der Herausgeber jedoch keine Verantwortung oder Haftung dafür, dass die angebotenen Informationen frei von Rechten Dritter sind. Bei Bekanntwerden von Rechtsverletzungen werden derartige Inhalte umgehend entfernt bzw. korrigiert. Sollten Sie auf eine Urheberrechts- oder sonstige Rechtsverletzung aufmerksam werden, wird um unverzügliche Kontaktaufnahme mit dem Herausgeber zur Bereinigung der Angelegenheit ersucht.<br>
+E-Mail: buero@plattform-mnvz.at<br>
+c) Links zu anderen Websites<br>
+www.plattform-mnvz.at enthält Links zu Webseiten Dritter. Das Setzen von Links ist ein Verweis auf Darstellungen und (auch andere) Meinungen, bedeutet aber nicht, dass den dortigen Inhalten zugestimmt wird. Der Herausgeber übernimmt keinerlei Haftung für Webseiten, auf die durch einen Link verwiesen wird. Das gilt sowohl für deren Verfügbarkeit als auch für die dort abrufbaren Inhalte. Nach Kenntnisstand des Betreibers enthalten die verlinkten Seiten keine rechtswidrigen Inhalte, sollten solche bekannt werden, wird in Erfüllung rechtlicher Verpflichtungen der elektronische Verweis umgehend entfernt.<br>
+Vermerk zur geschlechterneutralen Formulierung<br>
+Auch wenn im Text nicht explizit ausgeschrieben, beziehen sich alle personenbezogenen Formulierungen auf weibliche und männliche Personen.<br></p>
+
+<h3>Schutz personenbezogener Daten</h3>
+<p>Der Herausgeber achtet die Privatsphäre der NutzerInnen dieser Website. Alle Angaben werden entsprechend den geltenden datenschutzrechtlichen Bestimmungen vertraulich behandelt. Daten werden nicht an Dritte weitergegeben.<br>
+Der Herausgeber verarbeitet personenbezogene Daten nur, soweit es für einen bestimmten Zweck erforderlich ist. Die Angaben werden nicht für einen damit unvereinbaren Zweck weiterverwendet.<br>
+Obwohl Sie die meisten Teile dieser Website einsehen können, ohne Angaben zu Ihrer Person zu machen, ist die Übermittlung personenbezogener Daten teilweise erforderlich, um einzelne der auf dieser Website abrufbaren Online-Dienste erbringen zu können. Auf jenen Teilen dieser Website, deren Einsicht die Übermittlung personenbezogener Daten voraussetzt, werden Sie gesondert über die Verwendung Ihrer Daten informiert.<br>
+Ein Online-Dienst auf der Website ist ein im Internet bereitgestelltes Hilfsmittel zur Verbesserung der Kommunikationsmöglichkeiten zwischen Interessierten und BürgerInnen einerseits und der Selbst- und Interessensvertretung zum Maßnahmenvollzug andererseits.<br>S
+Der Herausgeber ist bestrebt, den NutzerInnen dieser Website stets genaue und aktuelle Information bereitzustellen. Wenn wir Kenntnis von fehlerhaften Informationsinhalten erlangen, werden wir diese ehestmöglich berichtigen.</p>
+        </div>
+			</div>
+		</div>
+  </div>
+		
+		<footer class="container-fluid text-center animated fadeIn signup">
+			<div class="row">
+				<div class="col-sm-4">
+					<a href=""><h5>Impressum</h5></a>
+				</div>
+			</div>
+		</footer>
+	</div>
+<script type="text/javascript">
+	function on() {
+	    document.getElementById("overlay").style.display = "inline-block";
+	    document.getElementById("overlay").style.color = "#000000";
+	}
+
+	function off() {
+	    document.getElementById("overlay").style.display = "none";
+	}
+</script>
+</body>
+</html>

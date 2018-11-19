@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <title>Plattform Maßnahmenvollzug</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Rubik:400,700,900" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="css/animate.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  	body{
+  		font-family: Rubik, sans-serif;
+		font-style: normal;
+		font-weight: 400;
+  	}
+  	.navbar {
+  		margin-bottom: 0;
+  		border-radius: 0;
+  		background-color: #fff;
+  		color: #000;
+  		padding: 1% 0;
+  		font-size: 1.2em;
+  		border: 0;
+  	}
+
+  	.navbar-default {
+      max-width: 1000px;
+      margin:auto;
+	}
+
+  	.navbar-brand {
+  		float: left;
+  		min-height: 55px;
+  		padding: 0 15px 5px;
+  	}
+  	.navbar-default .navbar-nav .active a, .navbar-default .navbar-nav .active a:focus, .navbar-default .navbar-nav .active a:hover {
+  		color: #000;
+  		background-color: white;
+  	}
+
+  	.navbar .navbar-nav, .center {
+	    display: inline-block;
+	    float: none;
+	}
+
+	.navbar .navbar-collapse {
+	    text-align: right;
+	}
+
+  	.navbar-default .navbar-nav li a {
+  		color:#d5d5d5;
+  		text-transform:uppercase;
+  		font-weight: 700;
+  		transition: all ease 0.3s;
+  	}
+
+  	.carousel-caption {
+  		top: 50%;
+  		transform: translateY(-50%);
+  		text-transform:uppercase;
+  	}
+  	.btn{
+  		font-size: 18px;
+  		color: #000;
+  		padding: 22px 42px;
+  		border: 2px solid #000;
+  		margin: 30px auto;
+  		text-transform: uppercase;
+  		transition: all ease 0.3s;
+  	}
+  	button.btn:hover, button.btn:focus{
+  		background:#000;
+  		color:#fff;
+  	}
+  	h2 {
+  		font-weight:900;
+  	}
+  	h4 {
+  		font-weight:700;
+  		font-size: 22px;
+  	}
+  	.headtxt h2{
+  		text-transform: uppercase;
+  		font-size: 3em;
+  	}
+
+  	.headpic{
+  		transform: translateX(0px);
+  		z-index: -1;
+  		-webkit-animation-delay: 0.3s;
+  		-moz-animation-delay: 0.3s;
+  		-o-animation-delay: 0.3s;
+  		-ms-animation-delay: 0.3s;
+  	}
+  	.headpic img {
+  		
+    	-webkit-filter: grayscale(100%) brightness(1.5);
+  		filter: grayscale(100%) brightness(1.5);
+  	}
+
+  	img.justiz{
+  		-webkit-filter: grayscale(100%);
+  		filter: grayscale(100%);
+  	}
+  	p, ol li {
+  		font-size:18px;
+  	}
+
+    ol li ol {
+      list-style-type: lower-alpha;
+    }
+  	.icon {
+  		max-width:200px;
+  		margin: 1% auto;
+  	}
+  	.container{
+  		margin:4% auto;
+  	}
+  	#overlay{
+  		position: fixed;
+  		display: none;
+  		width: 100%;
+  		height:100%;
+  		top: 0; 
+	    left: 0;
+	    right: 0;
+	    bottom: 0;
+  		background-color: rgba(256,256,256,0.9);
+  		z-index: 2;
+  		padding-top: 100px;
+  		height:100%;
+  		overflow: scroll;
+  	}
+
+  	.close {
+  		font-size:50px;
+  		transition: all ease 0.3s;
+  	}
+    .col-sm-1{
+      min-width:50px;
+    }
+
+  	button.close:hover {
+  	}
+
+  	#overlay .container{
+  		transition: 2s;
+  	}
+
+  	#overlay .fadein{
+  		opacity: 1;
+  	}
+
+  	.content {
+  		height: 100%;
+  		overflow:auto;
+  	}
+  	p.bold, h2.bold{
+  		font-weight:700;
+  		font-size: 30px;
+  		line-height:130%;
+  	}
+  	p.semibold{
+  		font-size: 24px;
+  		line-height:150%;
+  		margin-top: 25px;
+  	}
+  	p.footnote{
+  		font-size: 12px;
+  	}
+
+    .logos .row {
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+    .logos .row div{
+    }
+    .logos .row img{
+      max-height: 130px;
+      margin: auto;
+    }
+    .logos a {
+      text-decoration:none;
+      color:#000;
+    }
+    .logos a:hover, .logos a:focus {
+      color: #000;
+    }
+
+    .img-box{
+      margin:20px auto;
+      height:130px;
+      max-width: 80%;
+      vertical-align: middle;
+    }
+
+    .img-text{
+      margin: 20px auto;
+      max-width: 90%;
+      height: 40px;
+    }
+
+    .logo-wrapper{
+      width:98%;
+      margin:auto;
+      border: 1px solid #d5d5d5;
+      transition: all ease 0.3s;
+      vertical-align: middle;
+      display:inline-block;
+    }
+
+    .logo-wrapper:hover{
+      border: 1px solid black;
+    }
+  	footer {
+  		width:100%;
+  		border-top: 1px solid #d5d5d5;
+  		padding: 3%;
+  	}
+  	.fa{
+  		padding:15px;
+  		font-size: 30px;
+  		color: #FFF;
+  	}
+
+  	.fa:hover{
+  		color: #D5D5D5;
+  		text-decoration: none;
+  	}
+
+    ol {
+      padding: 20px auto;
+    }
+
+  	@media (min-width: 1400px) {
+		.container {
+    		width: 1370px;
+		}
+		.headtxt {
+			margin: 0 0px;
+		}
+	}
+
+	@media (min-width: 1200px) {
+		.headtxt h2{
+	  		transform: translateX(-100px);
+	  		margin: 7% auto;
+	  	}
+	  	.headpic{
+	  		transform: translateX(0px);
+	  		z-index: -1;
+	  	}
+	}
+
+	@media (min-width: 900px){
+		#overlay {
+			margin-left: 30px;
+		}
+		.navbar-default .navbar-nav li:not(:last-child) {
+			margin-right: 40px;
+		}
+	}
+
+  	@media (max-width: 900px) {
+  		.fa {
+  			font-size: 20px;
+  			padding: 10px;
+  		}
+  		.headtxt h2 {
+        word-wrap: break-word;
+      }
+      p.claim{
+        text-align:left;
+      }
+  	}
+
+  	@media (max-width: 600px) {
+  		.carousel-caption{
+  			display:none;
+  		}
+	  	#icon {
+	  		max-width: 150px;
+	  	}
+	  	h2 {
+	  		font-size: 1.7em ;
+	  	}
+	  	body {}
+  	}
+
+
+  	.headtxt-p {
+  		-webkit-animation-delay: 0.5s;
+  		-moz-animation-delay: 0.5s;
+  		-o-animation-delay: 0.5s;
+  		-ms-animation-delay: 0.5s;
+  	}
+  	.headtxt-h {
+  		-webkit-animation-delay: 0.3s;
+  		-moz-animation-delay: 0.3s;
+  		-o-animation-delay: 0.3s;
+  		-ms-animation-delay: 0.3s;
+  	}
+  	.signup{
+  		-webkit-animation-delay: 1s;
+  		-moz-animation-delay: 1s;
+  		-o-animation-delay: 1s;
+  		-ms-animation-delay: 1s;
+  	}
+
+  </style>
+</head>
+<body>
+  <div id="overlay">
+    <div class="container" onclick="off()">
+      <div class="row">
+        <div class="col-sm-4 col-xs-9" onclick="event.stopPropagation()">
+          <p class="bold">Hier erreichen Sie uns.</p>
+          <p class="semibold"><a href="mailto:buero@plattform-mnvz.at" target:"_top">buero@plattform-mnvz.at</a><br>Markgraf-Rüdiger-Strasse 12/3<br>1150 Wien<br>Österreich<br>Tel +43 1 786 42 45</p>
+        </div>
+        <div class="col-sm-1 col-xs-1">
+          <button type="button" class="close" aria-label="Close" onclick="off()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+	<div class="content">
+		<nav class="navbar navbar-default">
+			<div class="container-fluid animated fadeInUp">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+          <a class="navbar-brand img-responsive" href="index.html"><img style="" src="img/plattformklein.png"></a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="nav-item"><a href="index.html#plattform">Die Plattform</a></li>
+            <li class="nav-item active"><a href="forderungen.html">Forderungen</a></li>
+						<li class="nav-item" onclick="on()"><a href="#">Kontakt</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<div class="container header">
+			<div class="row">
+				<div class="col-lg-9 animated fadeInUp">
+          <h2>Forderungen</h2>
+          <p class="semibold">Neben den unten angeführten wichtigsten Reformschritten fordern wir die Umsetzung der Vorschläge der Expertenkommission des Justizministeriums vom Jänner 2015. Der Prozess der Gesetzwerdung muss unter Einbindung der relevanten Selbstvertretungen und der Betroffenen gemäß den Vorgaben der UN-BRK erfolgen. </p>
+          <h2 class="bold">Die wichtigsten Forderungen</h2>
+          <ol>
+            <li>
+              <p>Die Umsetzung des von der Rechtsprechung des EGMR eingeforderten Abstandsgebots.</p>
+            </li>
+            <li>
+              <p>Anpassung der Einweisungsvoraussetzungen</p>
+              <ol>
+                <li>
+                  <p>Anhebung der Strafandrohung von einem auf drei Jahre.</p>
+                </li>
+                <li>
+                  <p>Keine Anwendung des § 21 StGB an Jugendliche und Junge Erwachsene.</p>
+                </li>
+              </ol>
+            </li>
+            <li>
+              <p>Schaffung eines eigenen Maßnahmenvollzuggesetzes (MVG). Dem Ultima-Ratio-Charakter der Maßnahme muss im neu zu schaffenden Maßnahmenvollzugsgesetz ausdrücklich Rechnung getragen werden.</p>
+            </li>
+            <li>
+              <p>Im MVG wären Rechte und Pflichten, Freiheiten und Beschränkungen, Rechtsschutzinstrumente, Vertretungsregelungen und das Verfahren betreffend die Überprüfung der weiteren Anhaltung sowie das Entlassungsverfahren umfassend zu regeln. Gesetzliche Verankerung der Alternativen zum Vollzug bzw. zu forensischen Abteilungen.</p> 
+            </li>
+            <li>
+              <p>Einführung eines umfassenden Rechtsschutzes und einer Vertretung für alle in der Maßnahme befindlichen Personen im Sinne der §§ 33 – 38 Unterbringungsgesetz (UbG).</p> 
+            </li>
+            <li>
+              <p>Gutachten und Sachverständige</p>
+              <ol>
+                <li>
+                  <p>Durch eine engere Fassung der Parameter, die zusammengefasst zu einer Einweisung führen, soll die Treffsicherheit erhöht und gleichzeitig das Risiko von falschen Einweisungen verringert werden.</p>
+                </li>
+                <li>
+                  <p>Adäquate Honorierung der Tätigkeit der forensisch-psychiatrischen Sachverständigen im Zusammenhang mit Honoraranpassung für ärztliche Gutachten.</p>
+                </li>
+                <li>
+                  <p>Qualitäts(mindest)standards für forensisch-psychiatrische und -psychologische Gutachten.</p>
+                </li>
+                <li>
+                  <p>Förderung des Angebots an Qualifizierungsmodulen durch die Ärztekammer zur Erlangung des Diploms als forensisch-psychiatrische/r Gutachter/in.</p> 
+                </li>
+                <li>
+                  <p>Universitäre Verankerung der forensischen Psychiatrie – Schaffung eines Lehrstuhls für forensische Psychiatrie.</p> 
+                </li>
+              </ol>
+            </li>
+            <li>
+              <p>Geänderte Schwerpunktsetzung bei bedingter Entlassung</p>
+              <ol>
+                <li>
+                  <p>§21 Abs. 2 StGB</p>
+                  <p>Grundsätzlich soll die Maßnahme gemäß §21 Abs. 2 StGB mit dem Ende der Strafzeit ihr natürliches Ende finden. Dabei sollte nicht die Entlassung mangels ausreichender Gefährlichkeit, sondern die Nichtentlassung trotz Strafende zu begründen sein.</p>
+                </li>
+                <li>
+                  <p>§21 Abs. 1 StGB</p>
+                  <p>Zu Beginn der Maßnahme Erstellung eines Therapieplans nach State of the Art, Kontrolle von dessen Einhaltung und Evaluierung spätestens im Jahresrhythmus. Fortsetzung der Anhaltung nur nach weiterem, unabhängigen, externen Gutachten (inkl. Recht auf ZweitGutachten) und „Verhandlung“ im Sinne des UbG (Patient, Patientenanwälte, behandelnde Ärzte, Gutachter) und richterliche Entscheidung, wobei die NICHT-Entlassung besonders zu begründen ist.</p>
+                </li>
+              </ol>
+            </li>
+            <li>
+              <p>Eine untergebrachte Person, die ein Jahr in Lockerungen der Unterbringung verbracht hat, sollte bedingt entlassen werden, es sei denn, dass besondere Gründe bestehen, in Anbetracht des trotz der Bewährung während der Lockerungen bestehenden erheblichen Risikos der Begehung strafbarer Handlungen mit schweren Folgen die Unterbringung fortzusetzen.</p>
+            </li>
+            <li>
+              <p>Als Option zur Unterstützung der Systeme gibt es Sozialnetzkonferenzen. Bei diesen sind auch die Gutachter/innen und Anstaltsleiter/innen anwesend, um den dort entwickelten Zukunftsplan und die Alternativen kennenzulernen. Allenfalls ist der/die Gutachter/in bzw. Anstaltsleiter/in über den Plan zu informieren.</p>
+            </li>
+            <li>
+             <p>Entsprechend dem Ziel des Maßnahmenvollzugs sollten alle Behandlungsinterventionen ab dem ersten Tag des Vollzugs auf eine Vorbereitung der Entlassung und somit auf Behandlung und Risikominimierung abgestimmt sein.</p>
+           </li>
+          </ol>
+          <h2 class="bold">Flankierende Maßnahmen</h2>
+          <ol>
+            <li>
+              <p>Schaffung eigener forensischer Einrichtungen nach dem Vorbild des FZA (Forensisches Zentrum Asten). Einhergehend damit die Auflösung von Departments in herkömmlichen Justizanstalten (Stein, Karlau, Garsten) in einer Übergangsfrist.</p>
+            </li>
+            <li>
+              <p>Etablierung eines Case-Management von der bevorstehenden Einweisung bis nach der bedingten Entlassung.</p>
+            </li>
+            <li>
+              <p>Schaffung bundesweiter hochspezialisierter Nachsorgeeinrichtungen zur Ermöglichung der bedingter Entlassung und Erprobung der Nachsorge.</p>
+            </li>
+            <li>
+              <p>Die Praxis der Rechtspflege und des Vollzuges in Zusammenhang mit § 21 StGB wird mittels Formen der Zusammenarbeit interner und externer Akteure wissenschaftlich begleitet. Die Untergebrachten wären hierbei einzubeziehen. Kooperationen im Forschungsbereich sollen auch mit der Volksanwaltschaft und Universitäten erfolgen.</p>
+            </li>
+            <li>
+              <p>Umsetzung der Empfehlungen des Projekts IMPAIR zur Stärkung der Verfahrensrechte von strafrechtlich verdächtigen und beschuldigten Personen mit intellektuellen und/oder psychischen Beeinträchtigungen.</p>
+            </li>
+          </ol>
+        </div>
+			</div>
+		</div>
+  </div>
+		
+		<footer class="container-fluid text-center animated fadeIn signup">
+			<div class="row">
+				<div class="col-sm-4">
+					<a href=""><h5>Impressum</h5></a>
+				</div>
+			</div>
+		</footer>
+	</div>
+<script type="text/javascript">
+	function on() {
+	    document.getElementById("overlay").style.display = "inline-block";
+	    document.getElementById("overlay").style.color = "#000000";
+	}
+
+	function off() {
+	    document.getElementById("overlay").style.display = "none";
+	}
+</script>
+</body>
+</html>
